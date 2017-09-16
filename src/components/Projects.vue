@@ -3,13 +3,115 @@
   <!-- Hero content: will be in the middle -->
 
     <div class="container has-text-centered is-default">
+      <br>
       <h1 class="title">
-        UniCoinddd
+        Проекты
+        <a class="button is-large" @click="showModal()">
+          <span class="icon is-medium">
+            <i class="fa fa-plus"></i>
+          </span>
+          <span>Добавить проект</span>
+        </a>
       </h1>
+
       <ul>
-        <li v-for="project in projects">
-          {{ project.slug }}
-        </li>
+        <div class="box" v-for="project in projects">
+          <article class="media">
+            <div class="media-left">
+              <figure class="image is-64x64">
+                <img src="http://bulma.io/images/placeholders/128x128.png" alt="Image">
+              </figure>
+            </div>
+            <div class="media-content">
+              <div class="content">
+                <p>
+                  <strong>{{ project.title }}</strong> <small>@johnsmith</small> <small>31m</small>
+                  <br>
+                  {{ project.description}}
+                </p>
+              </div>
+              <nav class="level is-mobile">
+                <div class="level-right">
+                  <a class="level-item">
+                    <a class="button is-success">Apply</a>&nbsp;
+                  </a>
+                  <div class="level-item">
+                    <span class="icon is-small"><i class="fa fa-heart"></i></span> &nbsp;{{ project.bonus}}
+                  </div>
+                </div>
+              </nav>
+            </div>
+          </article>
+        </div>
+
+
+        <div class="modal is-active" v-if="isModalShow">
+          <div class="modal-background"></div>
+          <div class="modal-card">
+            <header class="modal-card-head">
+              <p class="modal-card-title">Добавить проект</p>
+              <button class="delete" aria-label="close" @click="closeModal()"></button>
+            </header>
+            <section class="modal-card-body">
+              <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                  <label class="label">Название</label>
+                </div>
+                <div class="field-body">
+                  <div class="field">
+                    <p class="control is-expanded has-icons-left">
+                      <input class="input" type="text" placeholder="Name">
+                      <span class="icon is-small is-left">
+                        <i class="fa fa-user"></i>
+                      </span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+
+
+              <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                  <label class="label">Категория</label>
+                </div>
+                <div class="field-body">
+                  <div class="field is-narrow">
+                    <div class="control">
+                      <div class="select is-fullwidth">
+                        <select>
+                          <option>Строительство</option>
+                          <option>Помощь пожилые люди</option>
+                          <option>Детский дом</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                  <label class="label">Описание</label>
+                </div>
+                <div class="field-body">
+                  <div class="field">
+                    <div class="control">
+                      <textarea class="textarea" placeholder="Explain how we can help you"></textarea>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </section>
+            <footer class="modal-card-foot">
+              <button class="button is-success">Добавить проект</button>
+              <button class="button">Отмена</button>
+            </footer>
+          </div>
+        </div>
+
       </ul>
     </div>
 
@@ -20,14 +122,34 @@
 export default {
   name: 'projects',
   mounted() {
-    console.log('Projecsddddsssts mounted!');
-    axios.get("https://api.whizzmate.com/services/plans")
-      .then(response => {this.projects = response.data})
+    // axios.get("https://api.whizzmate.com/services/plans")
+    //   .then(response => {this.projects = response.data})
+  },
+
+  methods: {
+    showModal() {
+      this.isModalShow = true;
+    },
+    closeModal() {
+      this.isModalShow = false;
+    }
   },
 
   data() {
     return {
-      projects: ['one', 'two']
+      isModalShow: false,
+      projects: [
+        {
+          title: "Firsts title",
+          description: "First description",
+          bonus: "Билет в кино"
+        },
+        {
+          title: "Second title",
+          description: "Second description",
+          bonus: "Билет в кино22"
+        }
+      ]
     }
   }
 }
