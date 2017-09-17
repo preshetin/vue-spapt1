@@ -127,8 +127,8 @@
 export default {
   name: 'projects',
   mounted() {
-    // axios.get("https://api.whizzmate.com/services/plans")
-    //   .then(response => {this.projects = response.data})
+    axios.get("https://social-point.herokuapp.com/projects")
+      .then(response => {this.projects = response.data})
   },
 
   methods: {
