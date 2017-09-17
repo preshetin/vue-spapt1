@@ -55,14 +55,15 @@
     <div class="container">
       <div class="content has-text-centered">
         <p>
-          <strong>Bulma</strong> by <a href="http://jgthms.com">Jeremy Thomas</a>. The source code is licensed
-          <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
-          is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+          <strong>Bee Social</strong>
         </p>
         <p>
-          <a class="icon" href="https://github.com/jgthms/bulma">
+          <a class="icon" href="https://github.com/dlinov/sp-hackathon">
             <i class="fa fa-github"></i>
-          </a>
+          </a> Back end
+          <a class="icon" href="https://github.com/preshetin/vue-spapt1">
+            <i class="fa fa-github"></i>
+          </a>  Front end
         </p>
       </div>
     </div>

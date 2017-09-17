@@ -2,13 +2,17 @@
   <div class="hello">
     <section class="section">
       <div class="container">
-        <h1 class="title">
+        <h1 class="title  is-4">
           Привет, {{ user.name }}
         </h1>
+        <br>
         <p class="subtitle">
-          У тебя <b>100 <span class="icon is-small"><i class="fa fa-tree"></i></span></b>
+
+          <h1 class="title is-2">
+            У тебя <b>100 <span class="icon is-small"><i class="fa fa-tree"></i></span></b>
+          </h1>
           <br>
-          <router-link v-bind:to="'/bonuses'"> Потратить</router-link>
+          <router-link class="button is-large" v-bind:to="'/bonuses'"> Потратить</router-link>
         </p>
       </div>
     </section>
