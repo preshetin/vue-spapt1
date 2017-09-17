@@ -18,11 +18,14 @@
             <span></span>
           </span>
           <div class="nav-right nav-menu">
-            <a class="nav-item is-active">
-              <router-link v-bind:to="'/'">Мой профиль</router-link>
-            </a>
             <a class="nav-item">
               <router-link v-bind:to="'/projects'">Проекты</router-link>
+            </a>
+            <a class="nav-item is-active">
+              <router-link v-bind:to="'/sponsors'">Спонсоры</router-link>
+            </a>
+            <a class="nav-item is-active">
+              <router-link v-bind:to="'/'"><i class="fa fa-user" aria-hidden="true"></i> Лиза,  <b>100 сот</b></router-link>
             </a>
             <!-- <a class="nav-item">
               Documentation

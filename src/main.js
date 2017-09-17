@@ -9,16 +9,16 @@ import VueRouter from 'vue-router'
 //tell vue to use the router
 Vue.use(VueRouter)
 /* eslint-disable no-new */
-//import the hello component
+
 import Hello from './components/Hello'
-//import the about component
 import Projects from './components/Projects'
+import Sponsors from './components/Sponsors'
+
 //define your routes
 const routes = [
-	//route for the home route of the webpage
 	{ path: '/', component: Hello },
-	//route for the about route of the webpage
-	{ path: '/projects', component: Projects }
+	{ path: '/projects', component: Projects },
+	{ path: '/sponsors', component: Sponsors }
 ]
 
 // Create the router instance and pass the `routes` option
