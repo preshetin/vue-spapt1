@@ -1,6 +1,6 @@
 # spa
 
-> A Vue.js single page application project using vue-router by samuelayo
+![Demo](https://www.dropbox.com/s/gmui6t3q1jztfmd/beesocial.gif?dl=0&raw=1)
 
 ## Build Setup
 
