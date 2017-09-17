@@ -2,7 +2,7 @@
 
   <!-- Hero content: will be in the middle -->
 
-    <div class="container has-text-centered is-default">
+    <div class="container is-default" style="margin: 0 40px">
       <br>
       <h1 class="title">
         Проекты
@@ -25,7 +25,7 @@
             <div class="media-content">
               <div class="content">
                 <p>
-                  <strong>{{ project.title }}</strong> <small>@johnsmith</small> <small>31m</small>
+                  <strong>{{ project.title }}</strong> <small>@velcom</small> <small>31m</small>
                   <br>
                   {{ project.description}}
                 </p>
@@ -35,8 +35,13 @@
                   <div class="level-item">
                     {{ project.bonus}}&nbsp;<span class="icon is-small"><i class="fa fa-tree"></i></span>
                   </div>
-                  <a class="level-item">
-                    <a class="button is-success">Откликнуться</a>&nbsp;
+                  &nbsp;
+
+                  <a class="level-item" v-if="!project.isApplied">
+                    <a class="button is-success" @click="apply(project.id)">Откликнуться</a>&nbsp;
+                  </a>
+                  <a class="level-item" v-else>
+                    <a class="button is-dark is-outlined" disabled><i class="fa fa-check" aria-hidden="true"></i>&nbsp;Вы откликнулись</a>&nbsp;
                   </a>
                 </div>
               </nav>
@@ -132,6 +137,13 @@ export default {
     },
     closeModal() {
       this.isModalShow = false;
+    },
+    apply(project_id) {
+      var project = this.projects.filter(function(project){ return project.id == project_id;} )[0];
+      console.log(project);
+      project.isApplied = true;
+      this.projects.splice(project_id - 1, 1, project);
+      console.log('applied for project id:' + project_id);
     }
   },
 
@@ -140,14 +152,18 @@ export default {
       isModalShow: false,
       projects: [
         {
+          id: 1,
           title: "Волонтеры Европейских игр 2019",
           description: "с июня 2018 года начнутся собеседования с кандидатами. После удачного прохождения собеседования с февраля 2019 года будут рассылаться письма-поздравления. А так же приглашение на прохождение обучения",
-          bonus: "100"
+          bonus: "100",
+          isApplied: false
         },
         {
+          id: 2,
           title: "Временное содержание кошек (egida.by)",
           description: "Мы собираемся создать документальный фильм, в котором отразить всю действительность отлова в Беларуси: кто, как и чем отлавливает собак, что с ними происходит после отлова. Мы приглашаем присоединиться волонтеров-наблюдателей",
-          bonus: "40"
+          bonus: "40",
+          isApplied: false
         }
       ]
     }
