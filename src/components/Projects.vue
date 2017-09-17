@@ -64,33 +64,26 @@
                 </div>
                 <div class="field-body">
                   <div class="field">
-                    <p class="control is-expanded has-icons-left">
-                      <input class="input" type="text" placeholder="Name">
-                      <span class="icon is-small is-left">
-                        <i class="fa fa-user"></i>
-                      </span>
+                    <p class="control is-expanded">
+                      <input class="input" type="text" placeholder="Name" v-model="form.title">
                     </p>
                   </div>
                 </div>
               </div>
 
 
-
               <div class="field is-horizontal">
                 <div class="field-label is-normal">
-                  <label class="label">Категория</label>
+                  <label class="label">Бонус</label>
                 </div>
                 <div class="field-body">
-                  <div class="field is-narrow">
-                    <div class="control">
-                      <div class="select is-fullwidth">
-                        <select>
-                          <option>Строительство</option>
-                          <option>Помощь пожилые люди</option>
-                          <option>Детский дом</option>
-                        </select>
-                      </div>
-                    </div>
+                  <div class="field">
+                    <p class="control is-expanded has-icons-left">
+                      <input class="input" type="text" placeholder="Price" v-model="form.price">
+                      <span class="icon is-small is-left">
+                        <i class="fa fa-tree"></i>
+                      </span>
+                    </p>
                   </div>
                 </div>
               </div>
@@ -103,7 +96,7 @@
                 <div class="field-body">
                   <div class="field">
                     <div class="control">
-                      <textarea class="textarea" placeholder="Explain how we can help you"></textarea>
+                      <textarea class="textarea" placeholder="Explain how we can help you" v-model="form.description"></textarea>
                     </div>
                   </div>
                 </div>
@@ -111,8 +104,8 @@
 
             </section>
             <footer class="modal-card-foot">
-              <button class="button is-success">Добавить проект</button>
-              <button class="button">Отмена</button>
+              <button class="button is-success" @click="store()">Добавить проект</button>
+              <button class="button" @click="closeModal()">Отмена</button>
             </footer>
           </div>
         </div>
@@ -127,8 +120,7 @@
 export default {
   name: 'projects',
   mounted() {
-    axios.get("https://social-point.herokuapp.com/projects")
-      .then(response => {this.projects = response.data})
+    this.getProjects();
   },
 
   methods: {
@@ -137,6 +129,26 @@ export default {
     },
     closeModal() {
       this.isModalShow = false;
+    },
+    getProjects() {
+      axios.get("https://social-point.herokuapp.com/projects")
+        .then(response => {this.projects = response.data});
+    },
+    store() {
+      console.log('storing...');
+      axios.post("https://social-point.herokuapp.com/projects", this.form,{
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': "application/json" }
+          })
+            .then(response => {
+                this.getProjects();
+                this.form.title = '';
+                this.form.description = '';
+                this.form.price = null,
+                this.form.bonus = '',
+                this.isModalShow = false;
+            });
     },
     apply(project_id) {
       var project = this.projects.filter(function(project){ return project.id == project_id;} )[0];
@@ -150,7 +162,14 @@ export default {
   data() {
     return {
       isModalShow: false,
-      projects: []
+      projects: [],
+      form: {
+        title: "",
+        description: "",
+        organizationId: "59bdd6cf1ae4940004dc925f",
+        price: 33,
+        bonus: 'some bonus'
+      }
     }
   }
 }
