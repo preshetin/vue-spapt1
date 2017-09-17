@@ -13,12 +13,14 @@ Vue.use(VueRouter)
 import Hello from './components/Hello'
 import Projects from './components/Projects'
 import Sponsors from './components/Sponsors'
+import Bonuses from './components/Bonuses'
 
 //define your routes
 const routes = [
 	{ path: '/', component: Hello },
 	{ path: '/projects', component: Projects },
-	{ path: '/sponsors', component: Sponsors }
+	{ path: '/sponsors', component: Sponsors },
+	{ path: '/bonuses', component: Bonuses }
 ]
 
 // Create the router instance and pass the `routes` option

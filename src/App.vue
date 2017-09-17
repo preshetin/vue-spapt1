@@ -25,7 +25,10 @@
               <router-link v-bind:to="'/sponsors'">Спонсоры</router-link>
             </a>
             <a class="nav-item is-active">
-              <router-link v-bind:to="'/'"><i class="fa fa-user" aria-hidden="true"></i> Лиза,  <b>100 сот</b></router-link>
+              <router-link v-bind:to="'/bonuses'"> Призы</router-link>
+            </a>
+            <a class="nav-item is-active">
+              <router-link v-bind:to="'/'"><i class="fa fa-user" aria-hidden="true"></i> Лиза,  <b>100 <span class="icon is-small"><i class="fa fa-tree"></i></span></b></router-link>
             </a>
             <!-- <a class="nav-item">
               Documentation
