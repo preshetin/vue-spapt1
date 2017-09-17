@@ -10,7 +10,7 @@
           <span class="icon is-medium">
             <i class="fa fa-plus"></i>
           </span>
-          <span>Добавить проект</span>
+          <span>Добавить</span>
         </a>
       </h1>
 
@@ -32,12 +32,12 @@
               </div>
               <nav class="level is-mobile">
                 <div class="level-right">
-                  <a class="level-item">
-                    <a class="button is-success">Apply</a>&nbsp;
-                  </a>
                   <div class="level-item">
                     <span class="icon is-small"><i class="fa fa-heart"></i></span> &nbsp;{{ project.bonus}}
                   </div>
+                  <a class="level-item">
+                    <a class="button is-success">Откликнуться</a>&nbsp;
+                  </a>
                 </div>
               </nav>
             </div>
@@ -140,14 +140,14 @@ export default {
       isModalShow: false,
       projects: [
         {
-          title: "Firsts title",
-          description: "First description",
-          bonus: "Билет в кино"
+          title: "Волонтеры Европейских игр 2019",
+          description: "с июня 2018 года начнутся собеседования с кандидатами. После удачного прохождения собеседования с февраля 2019 года будут рассылаться письма-поздравления. А так же приглашение на прохождение обучения",
+          bonus: "Билет на финальную игру"
         },
         {
-          title: "Second title",
-          description: "Second description",
-          bonus: "Билет в кино22"
+          title: "Временное содержание кошек (egida.by)",
+          description: "Мы собираемся создать документальный фильм, в котором отразить всю действительность отлова в Беларуси: кто, как и чем отлавливает собак, что с ними происходит после отлова. Мы приглашаем присоединиться волонтеров-наблюдателей",
+          bonus: "Занятие по дрессировке собаки"
         }
       ]
     }

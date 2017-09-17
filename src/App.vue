@@ -1,15 +1,15 @@
 <template>
-  <div id="app" class="container is-fullhd">
+  <div id="app" class="container is-fullhd" style="margin-top: 0;">
   <!-- the router outlet, where all matched components would ber viewed -->
 
-  <section class="hero is-light is-large">
+  <section class="hero is-dark is-large">
     <!-- Hero header: will stick at the top -->
     <div class="hero-head">
       <header class="nav">
         <div class="container">
           <div class="nav-left">
             <a class="nav-item">
-              <img src="static/logo.png" alt="Logo">
+              <img src="static/logo.png" alt="Logo" style="max-height: 73px; padding-top: 14px;">
             </a>
           </div>
           <span class="nav-toggle">
@@ -19,10 +19,10 @@
           </span>
           <div class="nav-right nav-menu">
             <a class="nav-item is-active">
-              <router-link v-bind:to="'/'">me</router-link>
+              <router-link v-bind:to="'/'">Мой профиль</router-link>
             </a>
             <a class="nav-item">
-              <router-link v-bind:to="'/projects'">Projects</router-link>
+              <router-link v-bind:to="'/projects'">Проекты</router-link>
             </a>
             <!-- <a class="nav-item">
               Documentation
