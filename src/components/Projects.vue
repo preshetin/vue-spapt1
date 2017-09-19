@@ -79,7 +79,7 @@
                 <div class="field-body">
                   <div class="field">
                     <p class="control is-expanded has-icons-left">
-                      <input class="input" type="text" placeholder="Price" v-model="form.price">
+                      <input class="input" type="number" placeholder="Price" v-model.number="form.price">
                       <span class="icon is-small is-left">
                         <i class="fa fa-tree"></i>
                       </span>
