@@ -15,7 +15,7 @@
       </h1>
 
       <ul>
-        <div class="box" v-for="project in projects">
+        <div class="box" v-for="(project, index) in projects">
           <article class="media">
             <div class="media-left">
               <figure class="image is-64x64">
@@ -33,12 +33,12 @@
               <nav class="level is-mobile">
                 <div class="level-right">
                   <div class="level-item">
-                    {{ project.bonus}}&nbsp;<span class="icon is-small"><i class="fa fa-tree"></i></span>
+                    {{ project.price}}&nbsp;<span class="icon is-small"><i class="fa fa-tree"></i></span>
                   </div>
                   &nbsp;
 
                   <a class="level-item" v-if="!project.isApplied">
-                    <a class="button is-success" @click="apply(project.id)">Откликнуться</a>&nbsp;
+                    <a class="button is-primary is-outlined" @click="apply(index, project)">Откликнуться</a>&nbsp;
                   </a>
                   <a class="level-item" v-else>
                     <a class="button is-dark is-outlined" disabled><i class="fa fa-check" aria-hidden="true"></i>&nbsp;Вы откликнулись</a>&nbsp;
@@ -150,12 +150,10 @@ export default {
                 this.isModalShow = false;
             });
     },
-    apply(project_id) {
-      var project = this.projects.filter(function(project){ return project.id == project_id;} )[0];
-      console.log(project);
+    apply(index, project) {
       project.isApplied = true;
-      this.projects.splice(project_id - 1, 1, project);
-      console.log('applied for project id:' + project_id);
+      this.projects.splice(index, 1, project);
+      console.log('applied for project id:' + project.id);
     }
   },
 
@@ -167,7 +165,7 @@ export default {
         title: "",
         description: "",
         organizationId: "59bdd6cf1ae4940004dc925f",
-        price: 33,
+        price: null,
         bonus: 'some bonus'
       }
     }
